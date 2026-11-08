@@ -1,91 +1,115 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SBA 1.9.9.1 — мод от redSBA</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>redSBA — разработчик</title>
+<style>
+  :root {
+    --bg: #f7f5f2;
+    --surface: #ffffff;
+    --text: #1d1b19;
+    --muted: #6b6560;
+    --accent: #e0463c;
+    --border: #e4dfd9;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141312;
+      --surface: #1f1d1b;
+      --text: #f2efeb;
+      --muted: #a39d97;
+      --accent: #ff6b61;
+      --border: #2e2b28;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141312;
+    --surface: #1f1d1b;
+    --text: #f2efeb;
+    --muted: #a39d97;
+    --accent: #ff6b61;
+    --border: #2e2b28;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 64px; }
+  header { text-align: center; margin-bottom: 40px; }
+  .avatar {
+    width: 96px; height: 96px; border-radius: 50%;
+    object-fit: cover;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; margin: 0 auto 16px;
+  }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  .tag { color: var(--muted); margin: 0; }
+  .about {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin-bottom: 48px;
+  }
+  .about p { margin: 0 0 12px; }
+  .about p:last-child { margin-bottom: 0; }
+  h2 { font-size: 1.4rem; margin: 0 0 20px; }
+  .projects { display: grid; gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px 24px;
+    text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .2s;
+    display: block;
+  }
+  .card:hover, .card:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
+  .card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+  .thumb { display: block; width: 100%; height: auto; border-radius: 12px; margin: 0 0 14px; }
+  .card p { margin: 0 0 10px; color: var(--muted); font-size: .95rem; }
+  .link { color: var(--accent); font-size: .9rem; font-weight: 600; word-break: break-all; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 56px; }
+</style>
 </head>
 <body>
-  <div class="scanlines" aria-hidden="true"></div>
-
-  <header class="nav">
-    <div class="logo glitch" data-text="redSBA">redSBA</div>
-    <nav>
-      <a href="#about">О моде</a>
-      <a href="#features">Функции</a>
-      <a href="#install">Установка</a>
-      <a href="#download">Скачать</a>
-    </nav>
+<div class="wrap">
+  <header>
+    <img class="avatar" src="logo.png" alt="redSBA">
+    <h1>redSBA</h1>
+    <p class="tag">разработчик · 11 лет · вайбкодер</p>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <p class="tag">// SBA 1.9.9.1 // MOD BUILD</p>
-      <h1 class="glitch" data-text="SBA 1.9.9.1">SBA 1.9.9.1</h1>
-      <p class="subtitle">Неофициальный мод от <span class="accent">redSBA</span>. Новый код. Новый контент. Никаких границ.</p>
-      <div class="hero-buttons">
-        <a href="#download" class="btn btn-primary">Скачать мод</a>
-        <a href="#features" class="btn btn-ghost">Функции</a>
-      </div>
-    </div>
-    <div class="hero-grid" aria-hidden="true"></div>
+  <section class="about">
+    <p>redSBA — 11-летний гений, который вайбкодит всякую фигню. Код пишется быстро, идеи появляются быстрее, а результат иногда работает, а иногда — нет, но всегда с душой.</p>
+    <p>Делает игры, моды и короткометражки, экспериментирует со всем, до чего дотягивается.</p>
   </section>
 
-  <section id="about" class="section">
-    <h2 class="section-title"><span>01.</span> О моде</h2>
-    <div class="about-box">
-      <p>Мод расширяет оригинальную SBA 1.9.9.1: добавляет новый контент, переработанный баланс и обновлённый интерфейс в кибер-эстетике.</p>
-      <p>Автор — <strong>redSBA</strong>.</p>
-    </div>
-  </section>
+  <h2>Проекты</h2>
+  <div class="projects">
+    <a class="card" href="https://redsba.github.io/taf/" target="_blank" rel="noopener">
+      <img class="thumb" src="taf.png" alt="turning a femboy">
+      <h3>turning a femboy</h3>
+      <p>Короткометражка.</p>
+      <span class="link">redsba.github.io/taf/</span>
+    </a>
+    <a class="card" href="https://redsba.github.io/mods/" target="_blank" rel="noopener">
+      <h3>redSBA mod SBA</h3>
+      <p>Мод для SBA.</p>
+      <span class="link">redsba.github.io/mods/</span>
+    </a>
+    <a class="card" href="https://redsba.github.io/thmod/" target="_blank" rel="noopener">
+      <h3>tiny hole mod</h3>
+      <p>Мод Tiny Hole.</p>
+      <span class="link">redsba.github.io/thmod/</span>
+    </a>
+  </div>
 
-  <section id="features" class="section">
-    <h2 class="section-title"><span>02.</span> Функции</h2>
-    <div class="cards">
-      <article class="card">
-        <div class="card-index">01</div>
-        <h3>Меню и стили</h3>
-        <p>Свои цвета переключателей, фон меню, выбор стиля Oculus или Liquid Glass, прозрачность и размер меню.</p>
-      </article>
-      <article class="card">
-        <div class="card-index">02</div>
-        <h3>Здоровье</h3>
-        <p>Можно взять до 2 147 483 647 HP без урона, убран лимит кулдауна хилера.</p>
-      </article>
-      <article class="card">
-        <div class="card-index">03</div>
-        <h3>Инструменты</h3>
-        <p>Инжектор .so, инструментарий, сцены, логи и дата создания мира.</p>
-      </article>
-      <article class="card">
-        <div class="card-index">04</div>
-        <h3>Языки и сохранения</h3>
-        <p>Языки: English, Português, 中文, Башкирский, Français. Вход через GitHub и сохранение data.json в репозиторий.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="install" class="section">
-    <h2 class="section-title"><span>03.</span> Установка</h2>
-    <ol class="steps">
-      <li><span class="step-num">01</span> Откройте страницу релизов на GitHub и скачайте APK последней версии.</li>
-      <li><span class="step-num">02</span> Установите APK на телефон, разрешив установку из неизвестных источников.</li>
-      <li><span class="step-num">03</span> Готово: мод работает сразу после установки, отдельный лаунчер не нужен.</li>
-    </ol>
-  </section>
-
-  <section id="download" class="section download">
-    <h2 class="section-title"><span>04.</span> Скачать</h2>
-    <p class="download-text">Последняя версия мода: v2.1 · Все релизы на GitHub</p>
-    <a href="https://github.com/redSBA/redSBA-mod-sba/releases/latest" target="_blank" rel="noopener" class="btn btn-primary btn-large" id="downloadBtn">Скачать с GitHub</a>
-    <p class="hint" id="downloadHint"></p>
-  </section>
-
-  <footer class="footer">
-    <p>© 2026 redSBA · Фан-мод, не связан с правообладателями оригинальной игры.</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <footer>© redSBA</footer>
+</div>
 </body>
 </html>
