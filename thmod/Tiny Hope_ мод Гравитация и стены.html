@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiny Hope: мод Гравитация и стены</title>
+<style>
+:root{
+  /* палитра: чёрный терминал, неоново-зелёный, маджента для контраста */
+  --bg:#050805;
+  --panel:#0b120b;
+  --fg:#9dffb0;
+  --accent:#00ff66;
+  --hot:#ff2bd6;
+  --dim:#4a7a55;
+  --font-body:"Courier New", Consolas, monospace;
+  --font-display:Impact, "Arial Black", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);color-scheme:dark}
+body{
+  background-image:repeating-linear-gradient(0deg,rgba(0,255,102,.04) 0 1px,transparent 1px 3px);
+  min-height:100%;
+  line-height:1.5;
+}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:16px}
+header{text-align:center;padding:24px 0 8px;border-bottom:1px dashed var(--dim)}
+h1{font-family:var(--font-display);font-size:clamp(34px,8vw,64px);margin:0;color:var(--accent);text-shadow:3px 3px 0 var(--hot);letter-spacing:2px;text-wrap:balance}
+.sub{color:var(--hot);margin:8px 0 0}
+.marquee{overflow:hidden;white-space:nowrap;border:1px solid var(--dim);margin:16px 0;padding:6px 0;background:var(--panel)}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 18s linear infinite;color:var(--hot)}
+@keyframes scroll{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.marquee span{animation:none;padding-left:0}}
+.box{border:1px solid var(--dim);background:var(--panel);padding:16px;margin:16px 0}
+h2{font-size:20px;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:1px}
+h2::before{content:"> ";color:var(--hot)}
+ul{padding-left:20px;margin:0}
+li{margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{border:1px solid var(--dim);padding:12px;background:var(--bg)}
+.card b{color:var(--hot);display:block;margin-bottom:4px}
+.term{background:#000;border:1px solid var(--accent);padding:12px;font-size:14px;overflow-x:auto;white-space:pre}
+.term .p{color:var(--hot)}
+.blink{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.blink{animation:none}}
+.note{color:var(--dim);font-size:13px}
+footer{text-align:center;color:var(--dim);font-size:13px;padding:16px 0 32px;border-top:1px dashed var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav style="padding-top:12px"><a href="https://redsba.github.io" style="color:var(--hot);text-decoration:none;border:1px solid var(--dim);padding:4px 10px;display:inline-block">&lt;&lt; назад</a></nav>
+  <header>
+    <h1>TINY HOPE<br>MOD: GRAVITY &amp; WALLS</h1>
+    <p class="sub">[ страница описания мода // v0.1 ]</p>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><span>*** ГРАВИТАЦИЯ ИЗМЕНЕНА *** ПРИЛИПАНИЕ К СТЕНАМ *** ПАУЗА = СЖАТИЕ ИГРОКА *** WELCOME TO THE GRID ***</span></div>
+
+  <section class="box">
+    <h2>О моде</h2>
+    <p>Мод для Tiny Hope, который меняет физику персонажа. Три функции, которые можно комбинировать: сила притяжения, прилипание к стенам и сжатие игрока по нажатию паузы на пульте.</p>
+    <p class="note">Это страница с описанием возможностей. Здесь нет ссылок на загрузку.</p>
+  </section>
+
+  <section class="box">
+    <h2>Функции</h2>
+    <div class="grid">
+      <div class="card">
+        <b>01 / ГРАВИТАЦИЯ</b>
+        Мод меняет силу притяжения персонажа. Гравитация может быть слабее, чтобы прыжки длились дольше, или сильнее, чтобы прыжки становились короткими и тяжёлыми.
+      </div>
+      <div class="card">
+        <b>02 / ПРИЛИПАНИЕ К СТЕНАМ</b>
+        Персонаж задерживается у стены, когда он касается её в воздухе, и может от неё оттолкнуться. Это открывает маршруты по вертикальным участкам уровней.
+      </div>
+      <div class="card">
+        <b>03 / СЖАТИЕ ПО ПАУЗЕ</b>
+        При нажатии кнопки паузы на пульте персонаж уменьшается в размере. Когда пауза снята, он возвращается к исходному размеру.
+      </div>
+    </div>
+  </section>
+
+  <section class="box">
+    <h2>Как это работает</h2>
+    <ul>
+      <li>Функции независимы: каждую можно включить или выключить отдельно.</li>
+      <li>Гравитация и прилипание к стенам действуют во время обычного движения.</li>
+      <li>Сжатие срабатывает только на кнопку паузы пульта, а не на клавиатуру.</li>
+    </ul>
+  </section>
+
+  <section class="box">
+    <h2>Лог / терминал</h2>
+    <div class="term" aria-label="Пример вывода мода"><span class="p">user@grid:~$</span> mod --status
+[ok] gravity_module ........ active
+[ok] wall_cling_module ..... active
+[ok] pause_shrink_module ... active
+<span class="p">user@grid:~$</span> <span class="blink">_</span></div>
+    <p class="note">Иллюстративный вывод, не реальный лог.</p>
+  </section>
+
+  <footer>
+    <p>// made on a CRT at 3am //</p>
+    <p>best viewed in 800x600</p>
+  </footer>
+</div>
+</body>
+</html>
